@@ -1,0 +1,19 @@
+Refer
+    class
+        <div class="testclass"></div>
+        Aufrufen mit .testclass
+    id
+        <div id="testid"></div>
+        Aufrufen mit #testid
+    Verschachtelte Elemente aufrufen
+        .testclass > img : Alle Image Elemente in der Klasse
+        .testclass > #testid : Alle Elemente mit testid ID in testclass 
+
+    
+
+Verlinken
+    a -> Anker
+    href -> Links, Paragraphen auf eigener Seite mit #
+    target ->_blank: Neues Fenster / same: Gleiches Fenster
+    <a href="..." target= "_blank"> Mein Text </a>
+

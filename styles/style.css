@@ -16,14 +16,18 @@
     --buttonLightBrown: #D5B895;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 * {
     font-family:'PT Serif', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: var(--TextBrownRegular);
     box-sizing: border-box;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 header {
@@ -35,15 +39,15 @@ header {
     vertical-align: center;
 }
 
-header h1 {
-    color: var(--backgroundBeige);
-    margin-top: 0;
-    padding-top: 56px;
-}
+    header h1 {
+        color: var(--backgroundBeige);
+        margin-top: 0;
+        padding-top: 56px;
+    }
 
-header p {
-    color: var(--backgroundBeige);
-}
+    header p {
+        color: var(--backgroundBeige);
+    }
 
 body {
     display: flex;
@@ -60,15 +64,11 @@ nav {
     grid-gap: 2px;
 }
 
-h2 {
-    text-align: center;
+.mitte {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
-
-h3 {
-    text-align: center;
-}
-
-
 
 .divider {
     width: 75%;
@@ -89,67 +89,67 @@ h3 {
     text-decoration: none;
 }
 
-#Dropdown *  {
-    margin: 0;
-    background-color: var(--buttonLightBrown);
-    color: var(--backgroundBeige);
-}
-
 .zutaten {
     position: relative;
     height: min-content;
 }
-.zutaten input {
-    width: 100%;
-    height: 35px;
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    cursor: pointer;
-}
-.zutaten input:checked ~ .drawer__name #Arrow {
-    display: inline-block;
-    animation: drehen 0.2s ease-in-out;
-    animation-fill-mode: forwards;
-}
-.zutaten input:checked ~ .knopf {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-.zutaten input:checked ~ table {
-    opacity: 1;
-    pointer-events: initial;
-    padding: 10px 0;
-    visibility: visible;
-}
+    .zutaten input {
+        width: 100%;
+        height: 35px;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        cursor: pointer;
+    }
+    .zutaten input:checked ~ .drawer__name #Arrow {
+        display: inline-block;
+        animation: drehen 0.2s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+    .zutaten input:checked ~ .knopf {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .zutaten input:checked ~ table {
+        opacity: 1;
+        pointer-events: initial;
+        padding: 10px 0;
+        visibility: visible;
+    }
 
-.zutaten table {
-    opacity: 0;
-    pointer-events: none;
-    transition: padding 0.2s;
-    visibility: collapse;
+    .zutaten table {
+        opacity: 0;
+        pointer-events: none;
+        transition: padding 0.2s;
+        visibility: collapse;
 
-    margin-left:0;
-    margin-right:0;
-    border-collapse: collapse;
-    width: 100%;
-    color: rgb(119, 111, 92);
-}
-.zutaten table tr:nth-child(2n) {
-    background-color:  rgb(255, 255, 255);
-}
-.zutaten table tr:nth-child(2n + 1) {
-    background-color:  rgb(239, 227, 209);
-}
-.zutaten table th, td {
-    border: 0px solid rgb(157, 147, 126);
-    padding: 10px;
-}
-.zutaten table td:nth-child(1) {
-    font-weight: bolder;
-    float: right;
+        margin-left:0;
+        margin-right:0;
+        border-collapse: collapse;
+        width: 100%;
+        color: rgb(119, 111, 92);
+    }
+    .zutaten table tr:nth-child(2n) {
+        background-color:  rgb(255, 255, 255);
+    }
+    .zutaten table tr:nth-child(2n + 1) {
+        background-color:  rgb(239, 227, 209);
+    }
+    .zutaten table th, td {
+        border: 0px solid rgb(157, 147, 126);
+        padding: 10px;
+    }
+    .zutaten table td:nth-child(1) {
+        font-weight: bolder;
+        float: right;
+    }
+
+#Dropdown *  {
+    margin: 0;
+    background-color: var(--buttonLightBrown);
+    color: var(--backgroundBeige);
 }
 
 #Geschichte {
@@ -164,25 +164,23 @@ h3 {
     align-items: center;
 }
 
-.bild {
-    -moz-box-shadow: 0 0 3px rgb(0, 0, 0);
-    -webkit-box-shadow: 0 0 3px rgb(0, 0, 0);
-    box-shadow: 0 0 3px rgb(0, 0, 0);
-    /* flex-basis: 20%;
-    max-width: 40%; */
-    display: block;
-    object-fit: cover;
-    width: 30%;
-    height: 160px;
-    margin: 0 2%;
-}
-.text {
-    width: 50%;
-}
+    .bild {
+        -moz-box-shadow: 0 0 3px rgb(0, 0, 0);
+        -webkit-box-shadow: 0 0 3px rgb(0, 0, 0);
+        box-shadow: 0 0 3px rgb(0, 0, 0);
+        display: block;
+        object-fit: cover;
+        width: 30%;
+        height: 160px;
+        margin: 0 2%;
+    }
+    .text {
+        width: 50%;
+    }
 
-.topf .bild {
-    object-position: bottom;
-}
+    .topf .bild {
+        object-position: bottom;
+    }
 
 #Variationen {
     margin: 0 2.5%;
@@ -194,14 +192,12 @@ h3 {
         display: flex;
         justify-content: space-between;
     }
+
     .links , .rechts {
         width: 15%;
     }
-
     .mitte {
         width: 60%;
-        display: flex;
-        flex-direction: column;
     }
 
     nav {
@@ -219,5 +215,4 @@ h3 {
         position: fixed;
         width: 15%;
     }
-
 }

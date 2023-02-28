@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #flaeche {
+      width: 500px;
+      height: 500px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 25px);
+      grid-template-rows: repeat(auto-fill, 25px);
+    }
+
+    #flaeche > * {
+      border: 1px solid green;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=> {
+      const gridContainer = document.getElementById("flaeche");
+
+      for (let i = 0; i < 400; i++) {
+        const gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+        gridContainer.appendChild(gridItem);
+      }
+
+    })
+  </script>
+</head>
+<body>
+  <div id="flaeche"></div>
+</body>
+</html>

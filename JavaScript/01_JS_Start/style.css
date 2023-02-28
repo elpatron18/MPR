@@ -1,0 +1,12 @@
+body {
+    font-family: Calibri;
+    font-size: 1.4em;
+    color: #006;
+}
+
+#a1 {
+    background-color: #79aad8;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #006;
+}

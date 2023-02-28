@@ -18,7 +18,7 @@
     }
 
     #flaeche > * {
-      border: 1px solid green;
+      border: 0.5px solid lightslategrey;
     }
   </style>
   <script>
@@ -30,6 +30,21 @@
         gridItem.classList.add('grid-item');
         gridContainer.appendChild(gridItem);
       }
+
+      let arr = Array.prototype.slice.call(document.getElementsByClassName("grid-item"))
+
+      //let allGrid = document.getElementsByClassName("grid-item");
+
+      arr.forEach(element => {
+        element.addEventListener("click", ()=> {
+          if(element.style.backgroundColor === "black") {
+            element.style.backgroundColor = "white";
+          }
+          else {
+            element.style.backgroundColor = "black";
+          }
+        })
+      })
 
     })
   </script>

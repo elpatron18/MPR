@@ -21,14 +21,25 @@ for (let row = 0; row < rows; row++) {
 
             getMyNumber: function () {
 
+                let obenRand = this.row === 0;
+                let untenRand = this.row === rows -1;
+                let linksRand = this.col === 0;
+                let rechtsRand = this.col === columns -1;
+
+                let rOffStart = -1, rOffStop = 1, cOffStart = -1, cOffStop = 1;
+
+                if (obenRand) rOffStart = 0;
+                if (untenRand) rOffStop = 0;
+                if (linksRand) cOffStart = 0;
+                if (rechtsRand) cOffStop = 0;
+
                 if (!this.bomb) {
                     let anzahlBomben = 0;
-                    //wenns in der Mitte ist
 
-                    for (let rOff = -1; rOff <= 1; rOff++) {
-                        for (let cOff = -1; cOff <= 1; cOff++) {
+                    for (let rOff = rOffStart; rOff <= rOffStop; rOff++) {
+                        for (let cOff = cOffStart; cOff <= cOffStop; cOff++) {
                             if (grid[this.row+rOff][this.col+cOff].bomb) {
-                                console.log("\t BOMBE")
+                                //console.log("\t BOMBE")
                                 anzahlBomben++;
                             }
                         }
@@ -64,8 +75,25 @@ for (let b = 0; b < anzahlBomben; b++) {
     grid[randRow][randCol].bomb = true;
 }
 
-grid[5][5].element.style.backgroundColor = 'blue';
+grid.forEach(row => {
+    row.forEach(cell => {
+        if (cell.getMyNumber() != null) {
+            cell.element.innerHTML += cell.getMyNumber();
+        }
+    })
+});
 
-console.log(grid[5][5].getMyNumber())
+let arr = Array.prototype.slice.call(document.getElementsByClassName("cell"))
 
+//let allGrid = document.getElementsByClassName("grid-item");
 
+arr.forEach(element => {
+    element.addEventListener("click", ()=> {
+        if(element.style.backgroundColor === "black") {
+            element.style.backgroundColor = "white";
+        }
+        else {
+            element.style.backgroundColor = "black";
+        }
+    })
+})

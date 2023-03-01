@@ -71,29 +71,13 @@ for (let row = 0; row < rows; row++) {
 for (let b = 0; b < anzahlBomben; b++) {
     let randRow = Math.floor(Math.random() * rows)
     let randCol = Math.floor(Math.random() * columns)
-    grid[randRow][randCol].element.style.backgroundColor = 'red';
+    //grid[randRow][randCol].element.style.backgroundColor = 'red';
     grid[randRow][randCol].bomb = true;
 }
 
-grid.forEach(row => {
-    row.forEach(cell => {
-        if (cell.getMyNumber() != null) {
-            cell.element.innerHTML += cell.getMyNumber();
-        }
-    })
-});
-
 let arr = Array.prototype.slice.call(document.getElementsByClassName("cell"))
-
-//let allGrid = document.getElementsByClassName("grid-item");
-
 arr.forEach(element => {
     element.addEventListener("click", ()=> {
-        if(element.style.backgroundColor === "black") {
-            element.style.backgroundColor = "white";
-        }
-        else {
-            element.style.backgroundColor = "black";
-        }
+        element.innerHTML += grid[element.dataset.row][element.dataset.col].getMyNumber()
     })
 })

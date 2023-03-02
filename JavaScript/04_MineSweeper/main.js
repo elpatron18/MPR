@@ -34,29 +34,56 @@ for (let row = 0; row < rows; row++) {
                 if (rechtsRand) cOffStop = 0;
 
                 if (!this.bomb) {
-                    let anzahlBomben = 0;
+                    let nearBomben = 0;
 
                     for (let rOff = rOffStart; rOff <= rOffStop; rOff++) {
                         for (let cOff = cOffStart; cOff <= cOffStop; cOff++) {
                             if (grid[this.row+rOff][this.col+cOff].bomb) {
                                 //console.log("\t BOMBE")
-                                anzahlBomben++;
+                                nearBomben++;
                             }
                         }
                     }
 
-                    return anzahlBomben;
+                    return nearBomben;
 
                 }
                 else return null;
             },
             reveal: function() {
                 if (this.bomb) this.element.style.backgroundImage = "url('Bomb.png')";
-                else this.element.innerHTML = this.getMyNumber();
+                else if (this.getMyNumber() === 0) {
+                    this.element.innerHTML = this.getMyNumber();
+
+                    let obenRand = this.row === 0;
+                    let untenRand = this.row === rows -1;
+                    let linksRand = this.col === 0;
+                    let rechtsRand = this.col === columns -1;
+
+                    let rOffStart = -1, rOffStop = 1, cOffStart = -1, cOffStop = 1;
+
+                    if (obenRand) rOffStart = 0;
+                    if (untenRand) rOffStop = 0;
+                    if (linksRand) cOffStart = 0;
+                    if (rechtsRand) cOffStop = 0;
+
+                    for (let rOff = rOffStart; rOff <= rOffStop; rOff++) {
+                        for (let cOff = cOffStart; cOff <= cOffStop; cOff++) {
+                            console.log(this.row + rOff )
+                            grid[this.row + rOff][this.col + cOff].reveal();
+                        }
+                    }
+
+                }
+                else {
+                    this.element.innerHTML = this.getMyNumber();
+                }
             }
         };
     }
 }
+
+
 
 const gridElement = document.getElementById('grid');
 

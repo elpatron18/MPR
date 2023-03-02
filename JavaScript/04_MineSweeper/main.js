@@ -18,6 +18,7 @@ for (let row = 0; row < rows; row++) {
             row: row,
             col: col,
             bomb: false,
+            revealed: false,
 
             getMyNumber: function () {
 
@@ -51,9 +52,13 @@ for (let row = 0; row < rows; row++) {
                 else return null;
             },
             reveal: function() {
+
+                if (this.revealed) return;
+
                 if (this.bomb) this.element.style.backgroundImage = "url('Bomb.png')";
                 else if (this.getMyNumber() === 0) {
                     this.element.innerHTML = this.getMyNumber();
+                    this.revealed = true;
 
                     let obenRand = this.row === 0;
                     let untenRand = this.row === rows -1;
@@ -69,7 +74,7 @@ for (let row = 0; row < rows; row++) {
 
                     for (let rOff = rOffStart; rOff <= rOffStop; rOff++) {
                         for (let cOff = cOffStart; cOff <= cOffStop; cOff++) {
-                            console.log(this.row + rOff )
+                            console.log((this.row + rOff)  + "\t " + (this.col + cOff))
                             grid[this.row + rOff][this.col + cOff].reveal();
                         }
                     }

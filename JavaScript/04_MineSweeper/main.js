@@ -4,8 +4,8 @@ const anzahlBomben = 10;
 
 const meinGrid = document.getElementById('grid')
 
-meinGrid.style.gridTemplateColumns = `repeat(${columns}, 20px`;
-meinGrid.style.gridTemplateRows = `repeat(${rows}, 20px`;
+meinGrid.style.gridTemplateColumns = `repeat(${columns}, 50px`;
+meinGrid.style.gridTemplateRows = `repeat(${rows}, 50px`;
 
 document.body.appendChild(meinGrid);
 
@@ -50,7 +50,10 @@ for (let row = 0; row < rows; row++) {
                 }
                 else return null;
             },
-
+            reveal: function() {
+                if (this.bomb) this.element.style.backgroundImage = "url('Bomb.png')";
+                else this.element.innerHTML = this.getMyNumber();
+            }
         };
     }
 }
@@ -68,16 +71,48 @@ for (let row = 0; row < rows; row++) {
     }
 }
 
-for (let b = 0; b < anzahlBomben; b++) {
-    let randRow = Math.floor(Math.random() * rows)
-    let randCol = Math.floor(Math.random() * columns)
-    //grid[randRow][randCol].element.style.backgroundColor = 'red';
-    grid[randRow][randCol].bomb = true;
-}
-
 let arr = Array.prototype.slice.call(document.getElementsByClassName("cell"))
+
+let ersterKlick = true;
 arr.forEach(element => {
     element.addEventListener("click", ()=> {
-        element.innerHTML += grid[element.dataset.row][element.dataset.col].getMyNumber()
+
+        if (ersterKlick) {
+            // Generiere Bomben
+            let erstBomben = 0;
+            while (erstBomben < anzahlBomben) {
+                let randRow = Math.floor(Math.random() * rows);
+                let randCol = Math.floor(Math.random() * columns);
+                if (!grid[randRow][randCol].bomb &&
+                    Math.abs(randRow - element.dataset.row) > 1 &&
+                    Math.abs(randCol - element.dataset.col) > 1) {
+                    grid[randRow][randCol].bomb = true;
+                    //grid[randRow][randCol].element.style.backgroundColor = 'red';
+                    erstBomben++;
+                }
+                //grid[element.dataset.row][element.dataset.col].reveal();
+
+            }
+            ersterKlick = false;
+        }
+
+        grid[element.dataset.row][element.dataset.col].reveal();
+
     })
+
+/*
+    // Dev Tools
+    let dev = prompt("Dev?") === "dev";
+
+    if (dev) {
+        arr.forEach(element => {
+            if (grid[element.dataset.row][element.dataset.col].bomb){
+                element.style.backgroundColor = 'red';
+            }})
+    }
+
+
+ */
+
+
 })

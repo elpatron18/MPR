@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Addierer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            gap: 3vh;
+        }
+    </style>
 </head>
 <body>
-  <input type="number" id="z1"> + <input type="number" id="z2"> = <p id="erg"></p>
-  <input type="button" value="Addieren" id="berechnen">
+    <div class="eingabe">
+        <input type="number" id="z1"> + <input type="number" id="z2">
+    </div>
+    <input type="button" value="Addieren" id="berechnen">
+    <div class="ergebnis">
+      = <span id="erg"></span>
+    </div>
   <script src="rechner.js"></script>
 </body>
 </html>

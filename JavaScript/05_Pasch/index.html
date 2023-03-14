@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column;
+      gap: 3vh;
+    }
+    .bild {
+      background-size: 200px 200px;
+      border: 1px solid red;
+      height: 200px;
+      width: 200px;
+    }
+    .bilder {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <button id="neu">Roll</button>
+  <div class="bilder">
+    <div class="bild" id="Bild1"></div>
+    <div class="bild" id="Bild2"></div>
+  </div>
+  <div class="ergebnis">
+    <div class="bild" id="Gleich"></div>
+  </div>
+  <script src="js.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>The Window Object</h1>
+    <h2>The setInterval() Method</h2>
+
+    <p id="demo"></p>
+
+    <script>
+      /*The setInterval() method calls a function at specified intervals (in milliseconds).
+        The setInterval() method continues calling the function until clearInterval() is called, or the window is closed.*/
+      
+        // 1000 Millisekunden - eine Sekunde
+      let timer = setInterval(displayHello, 1000);
+      let x = 0;
+
+      function displayHello() {
+        document.getElementById('demo').innerHTML += 'Hello! ';
+        x = x + 1;
+        if (x == 10) {
+          window.clearInterval(timer);
+        }
+      }
+    </script>
+  </body>
+</html>

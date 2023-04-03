@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Pasch - drei Elemente</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body {
+			    text-align: center;
+			}
+			
+			
+			img {
+			        width: 200px;
+			        height: 200px;
+			        margin: 50px;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+
+		<!-- +++++++++++++++++++ -->
+		<!-- +    HTML-TEIL    + -->
+		<!-- +++++++++++++++++++ -->
+
+		<input type="button" id="gobutton" value="Go">
+
+		<br>
+
+		<img id="z1" src="0.png">
+		<img id="z2" src="0.png">
+		<img id="z3" src="0.png">
+		
+		<br>
+		<img id="ergebnis" src="haken.png">
+		
+
+
+		<!-- +++++++++++++++++++ -->
+		<!-- + JAVASCRIPT-TEIL + -->
+		<!-- +++++++++++++++++++ -->
+
+		<script>
+      // Button holen
+      let goButton = document.getElementById('gobutton');
+
+      //EventListener auf Button
+      gobutton.addEventListener('click', go);
+			function go() {
+				
+				zz1 = Math.floor((Math.random()*10)+0)
+				zz2 = Math.floor((Math.random()*10)+0)
+				zz3 = Math.floor((Math.random()*10)+0)
+				
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj1=document.getElementById('z1')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj1.setAttribute("src", zz1 + ".png")
+
+
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj2=document.getElementById('z2')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj2.setAttribute("src", zz2 + ".png")
+			
+			    
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj3=document.getElementById('z3')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj3.setAttribute("src", zz3 + ".png")
+			    
+			    
+			    if(zz1 == zz2 && zz2 == zz3) {
+			    	bildname = "haken"	
+			    } else {
+			    	bildname = "kreuz"	
+			    }
+			    imgObjE=document.getElementById('ergebnis')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObjE.setAttribute("src", bildname + ".png")
+			    
+			}
+					
+		</script>
+		
+	</body>
+	
+</html>

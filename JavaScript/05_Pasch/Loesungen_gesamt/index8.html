@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Pasch</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body {
+			    text-align: center;
+			}
+			
+			
+			img {
+			        width: 200px;
+			        height: 200px;
+			        margin: 50px;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+
+		<!-- +++++++++++++++++++ -->
+		<!-- +    HTML-TEIL    + -->
+		<!-- +++++++++++++++++++ -->
+
+		<img id="z1" src="0.png">
+		<img id="z2" src="0.png">
+		<img id="z3" src="0.png">
+		
+		<br>
+		<img id="ergebnis" src="haken.png">
+
+		<br>
+		Paschstatistik:<span id="p">0</span> von <span id="v">0</span>
+
+
+
+
+		<!-- +++++++++++++++++++ -->
+		<!-- + JAVASCRIPT-TEIL + -->
+		<!-- +++++++++++++++++++ -->
+
+		<script>
+
+			let pasch = 0
+			let versuche = 0
+
+			function go() {
+
+				versuche = versuche + 1
+				
+				
+				zz1 = Math.floor((Math.random()*10)+0)
+				zz2 = Math.floor((Math.random()*10)+0)
+				zz3 = Math.floor((Math.random()*10)+0)
+				
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj1=document.getElementById('z1')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj1.setAttribute("src", zz1 + ".png")
+
+
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj2=document.getElementById('z2')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj2.setAttribute("src", zz2 + ".png")
+			
+			    
+			    
+			    //1. Relevantes JS-Objekt ermitteln
+			    imgObj3=document.getElementById('z3')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObj3.setAttribute("src", zz3 + ".png")
+			    
+			    
+			    if((zz1 == 1 && zz2 == 1 && zz3 != 1) || (zz1 == 1 && zz2 != 1 && zz3 == 1) || (zz1 != 1 && zz2 == 1  && zz3 == 1)) {
+			    	bildname = "haken"	
+					pasch = pasch + 1
+					window.clearInterval(timer)
+			    } else {
+			    	bildname = "kreuz"	
+			    }
+			    imgObjE=document.getElementById('ergebnis')
+			    //2. Methoden/Eigenschaften nutzen
+			    imgObjE.setAttribute("src", bildname + ".png")
+			    
+			    document.getElementById("p").innerText = pasch
+			    document.getElementById("v").innerText = versuche
+			    
+			}
+			
+			var timer = setInterval(go, 100)
+					
+		</script>
+		
+	</body>
+	
+</html>

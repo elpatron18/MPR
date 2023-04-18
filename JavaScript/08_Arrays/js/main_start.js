@@ -27,7 +27,11 @@ function createListItem(name) {
 }
 
 function createList() {
-  studentList.innerHTML = ""
+
+  while (studentList.lastElementChild) {
+    studentList.removeChild(studentList.lastElementChild)
+  }
+  students.sort()
   for (let i = 0; i < students.length; i++) {
     createListItem(students[i])
   }
@@ -40,15 +44,16 @@ addStundentButton.addEventListener("click",  () => {
   }
   let text = nameInput.value
 
-  if (text === "") {
-    agbInput.checked = false;
+  if (text.trim() === "") {
+    alert("Bitte geben Sie einen Namen ein!")
+    agbInput.checked = false
     return
   }
 
     students.push(text)
     createList()
 
-    agbInput.checked = false;
+    agbInput.checked = false
     nameInput.value = ""
 })
 
